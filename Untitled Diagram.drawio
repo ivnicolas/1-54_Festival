@@ -1,1 +1,46 @@
-<mxfile host="app.diagrams.net" modified="2021-03-17T17:46:19.283Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" version="14.4.8" etag="FxLRj9hypgQnPP8qD_c4" type="github"><diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">7VhZc9MwEP41Hp5gfBQnecRp0wKhU2ihw6NiK7aI7DWynINfzyqWYzsOOYD0yDQv0a43K2m/b4/YcPrx/FKQNPoEAeWGbQZzwzk3bNuybQe/lGZRaLq9bqEIBQu0UaW4Zb+oVppam7OAZg1DCcAlS5tKH5KE+rKhI0LArGk2Bt7cNSUhbSlufcLb2nsWyEjfwu5U+ivKwqjc2XJ7xZOYlMb6JllEApjVVM6F4fQFgCxW8bxPuQpeGZf794t7Ppy4lx8+Zz/JV+/j3fW314WzwSE/WV1B0ET+X9d24XpKeK7jpe8qF2UABeRJQJUT03C8SMYclxYuf1ApFxpwkktAFQgZQQgJ4UOAVNuNIZHazFIyTYJ3CliURxz8SaEaMM71Hihp+y5KmRQwWWGnHKyAUMacjCj3iD8JlwftAweBjxJIqHIVIBn0XarDXVRab8/YagwyyIVPt9jpbJFEhHSbP7ewU+er8VQjd0khplIs0EBQTiSbNslMdE6EK7sKd1xo6A+ggdOiwZDEqcp6oFnySuJqBmKyhRsKl1nEJL1NyTJAMywnTb7UeYBX9UJOskyjuAPkw0CaUiHpfGtYy6euzu2yuGlxVlUKq0z/qFYlzswjAXHWAuI7Fs+XlPyXlHT3TMmyY+3MSU2Wkhh7p6j2dAMskTUTGI8zPNg6dVYb/j2b3rbYdA0tMu3G41nT7ZHI1DmMS9aT55L7hxbhcgyDNxK4CtUq5XkYIlnQXWI4g3btiiAe5dnudtHAWDFoQGLGVbyuKJ9SyXyyoakQzkLc99xHuKnYTB7ckiUhSm4l3S3JivX3iM2m02w2K7nebcwN3aZ7rG7TaWF6g+gV0NkmX+J7Yh3fsddA6D12y+/uU6SfdQl+8I5fVtPdLd/as0xr9phvHPw0CPT0p4DeXjPlyxhwHIbZpzYIlCes8cnL+ag9CYxykSwHAcjlyySwbRKwNzWhB50EykJYA/ULTQlDMM3hKc4B6//8z5zHngPKStGEgKuY2maRYSeGwfos5ljHwwDF6k1tUQqr993OxW8=</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-03-17T18:55:58.507Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="hAcRcV0AD8ruNZScA1HD" version="14.4.8" type="github">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1310" dy="910" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-3" value="" style="rounded=0;whiteSpace=wrap;html=1;opacity=75;gradientColor=#ea6b66;strokeColor=#FF0000;fillColor=#FF0000;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry y="880" width="1650" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;opacity=75;gradientColor=#FFFF00;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4" y="550" width="1650" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#d79b00;opacity=75;gradientColor=#ffa500;fillColor=#FF9933;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4" y="220" width="1650" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-6" value="&lt;font style=&quot;font-size: 40px&quot;&gt;Artist Class&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=75;fontSize=50;rotation=-90;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-120" y="700" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-8" value="&lt;font&gt;&lt;font style=&quot;font-size: 40px&quot;&gt;CLI Class&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=75;fontSize=50;rotation=-90;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-120" y="380" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-9" value="&lt;font style=&quot;font-size: 40px&quot;&gt;Scrapper Class&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;opacity=75;fontSize=50;rotation=-90;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-120" y="1020" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-13" value="&lt;p style=&quot;font-size: 12px&quot;&gt;User Starts App&lt;/p&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=50;opacity=75;fillColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="20" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-14" value="&lt;p style=&quot;font-size: 12px&quot;&gt;User Exits App&lt;/p&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=50;opacity=75;fillColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-15" value="New Artist Objects&#xa;are created and &#xa;stored " style="shape=dataStorage;fixedSize=1;strokeColor=#000000;fillColor=#FFFFFF;gradientColor=none;fontSize=10;opacity=75;align=center;verticalAlign=middle;whiteSpace=wrap;labelPosition=center;verticalLabelPosition=middle;spacingLeft=-13;spacingTop=2;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="430" y="610" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-16" value="Get Data about &#xa;individual artists" style="shape=dataStorage;fixedSize=1;strokeColor=#000000;fillColor=#FFFFFF;gradientColor=none;fontSize=10;opacity=75;align=center;verticalAlign=middle;whiteSpace=wrap;labelPosition=center;verticalLabelPosition=middle;spacingLeft=-13;spacingTop=2;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="560" y="980" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-17" value="&amp;nbsp;Get Data about artists participating in the&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;1-54 Art Festival&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;&amp;nbsp;NY Edition&lt;div style=&quot;padding: 0px ; margin: 0px&quot;&gt;&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFFFFF;gradientColor=none;fontSize=10;opacity=75;align=center;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="320" y="1010" width="210" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="f-RrZv-tHwJxY2jI-w4x-18" value="&lt;meta charset=&quot;utf-8&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: helvetica; font-size: 10px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; background-color: rgb(248, 249, 250); display: inline; float: none;&quot;&gt;Get Data about&amp;nbsp;&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: helvetica; font-size: 10px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; background-color: rgb(248, 249, 250);&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: helvetica; font-size: 10px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; background-color: rgb(248, 249, 250); display: inline; float: none;&quot;&gt;individual artists&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFFFFF;gradientColor=none;fontSize=10;opacity=75;align=center;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="740" y="670" width="210" height="130" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
