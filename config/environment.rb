@@ -4,6 +4,8 @@ require "open-uri"
 require "nokogiri"
 require "pry"
 
-require_relative "./lib/cli.rb"
-require_relative "./lib/scrapper.rb"
-require_relative "./lib/artist.rb"   
+require_relative "../lib/cli"
+require_relative "../lib/scraper"
+require_relative "../lib/artist"   
+
+Scraper.scrape_artist
