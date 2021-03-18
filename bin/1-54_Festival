@@ -7,6 +7,7 @@ require "pry"
 require_relative "../lib/cli"
 require_relative "../lib/scraper"
 require_relative "../lib/artist"   
+require_relative "../lib/exhibitors"   
 
 Scraper.scrape_exhibitors
 # CLI.new.run
