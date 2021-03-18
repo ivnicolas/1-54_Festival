@@ -4,22 +4,38 @@ class CLI
         #puts welcome message with blurb about festival
         puts "Welcome to the 1-54 Artist Catalog"
         puts "1-54 is the first leading international art fair dedicated to contemporary art from Africa and its diaspora."
-        #Scrapes Location
-        #list location methods
-        #location_menue
-        Scraper.scrape_artist
-        #list artist in right number and numerically (list artist method)
-        list_artist
-        #menue
-        artist_menue 
+        main_menue
+        # puts "1 - Explore Galleries \n 2- Explore Artist"
+        # #Scrapes Location
+        # #list location methods
+        # #location_menue
+        # Scraper.scrape_artist
+        # #list artist in right number and numerically (list artist method)
+        # list_artist
+        # #menue
+        # artist_menue 
        
     end 
     
-    def location_menue
-        #Ask user to choose location method
-        #if not valid raise error
-        #if valid call a method that prints out artist at that location 
+    def main_menue
+       #ask user to chose how they would like to explore the festival 
+       puts ""
+       puts "Type (A) to Explore Galleries \n Type (B) to Explore Artist"
+       user_input=gets.chomp
+        if user_input.downcase == "a"
+            put "Galleries"
+        elsif user_input.downcase == "b"
+            Scraper.scrape_artist
+            list_artist
+            artist_menue
+        else 
+            puts "Invalid entry. Please try again"
+            main_menue
+        end 
+
+       #prints out the correct list based on selection
     end 
+
     def artist_menue
         #Ask user to Choose Artist
         puts "Please select a number from the list present to learn more about an artist"
