@@ -1,4 +1,4 @@
-require 'pry'
+
 class Scraper 
 
     #Scrape Artist
@@ -13,13 +13,23 @@ class Scraper
             name = artist.text
             Artist.new(name,url)
         end 
-        binding.pry
+        
     end 
 
        
     #Scrape Individual Artist 
-    def scrape_individual_artist
+    def self.scrape_individual_artist(artist)
         #Here is where you collect gallery, bio, and about message 
+        html = open(artist.url)
+        doc = Nokogiri::HTML(html)
+        binding.pry
+
+        artist.gallery = doc.css("a.artist-representation").text
+        artist.bio = doc.css("div.small-bio p").text
+        artist.about_art =  doc.css("div section p").text 
+
+        <section class="entry-content ninth-5 serif no-padding">
+
     end 
     
 
@@ -27,3 +37,5 @@ class Scraper
     #**be mindful that artist name are displayed last name to first, so where in any of the lib classes ill you fix this so
     #it will be displayed first name last name? 
 end 
+
+#bin/1-54_Festival

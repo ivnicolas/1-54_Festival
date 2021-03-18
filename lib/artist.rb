@@ -1,6 +1,6 @@
 class Artist
     #add attr_accessors 
-    attr_accessor :name, :url, :gallery, :bio, :about_art
+    attr_accessor :name, :url, :gallery, :bio, :about_art 
 
     #collect all instances
 
