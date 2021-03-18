@@ -8,4 +8,5 @@ require_relative "../lib/cli"
 require_relative "../lib/scraper"
 require_relative "../lib/artist"   
 
-CLI.new.run
+Scraper.scrape_exhibitors
+# CLI.new.run

@@ -2,6 +2,7 @@ class CLI
 
     def run
         #puts welcome message with blurb about festival
+        puts ""
         puts "Welcome to the 1-54 Artist Catalog"
         puts "1-54 is the first leading international art fair dedicated to contemporary art from Africa and its diaspora."
         main_menue
@@ -20,7 +21,7 @@ class CLI
     def main_menue
        #ask user to chose how they would like to explore the festival 
        puts ""
-       puts "Type (A) to Explore Galleries \n Type (B) to Explore Artist"
+       puts "Type (A) to Explore Galleries OR (B) to Explore Artist"
        user_input=gets.chomp
         if user_input.downcase == "a"
             put "Galleries"

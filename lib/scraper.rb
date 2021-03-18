@@ -3,10 +3,20 @@ class Scraper
 
     RELATIVE_URL= "https://www.1-54.com/"
 
-    def self.scrape_locations
+   
+    #Scrape Exhibitors
+    def self.scrape_exhibitors
+        html = open("https://www.1-54.com/new-york/exhibitors/")
+        doc = Nokogiri::HTML (html)
+        binding.pry
+        doc.css("ul.text-columns.column-4 li a").each do |gallery|
+            url = gallery.attr("href")
+            name = gallery.text
+            binding.pry
+        end 
 
+        
     end 
-
     #Scrape Artist
     def self.scrape_artist 
 
