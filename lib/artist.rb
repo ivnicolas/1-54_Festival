@@ -1,6 +1,7 @@
 class Artist
     #add attr_accessors 
-    attr_accessor :name, :url, :gallery, :bio, :about_art 
+    attr_accessor :url, :gallery, :bio, :about_art 
+    attr_writer :name
 
     #collect all instances
 
@@ -18,6 +19,12 @@ class Artist
 
     def self.all
         @@all
+    end 
+
+    def  name
+        name_formatted=@name.split(", ")
+        new_name= name_formatted.reverse.join(" ")
+        new_name
     end 
 
 end
