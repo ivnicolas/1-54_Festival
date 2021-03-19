@@ -50,7 +50,6 @@ class CLI
             artist_details(artist)
         end 
 
-        closer
 
     end 
 
@@ -69,14 +68,25 @@ class CLI
         puts "Here is more details about #{artist.name}."
         puts ""
         # Puts gallery info
-        puts "Representing Gallery: #{artist.gallery} "
+        puts "Representing Gallery: #{artist.gallery.name} "
         puts ""
         # Puts bio message
         puts "Artist Bio: #{artist.bio}"
         puts ""
         # Puts paragraph about artist's work 
-        puts "About Artist's Work: #{artist.about_art}"
+        puts "About the Artist : #{artist.about_art}"
         puts ""
+
+        puts "Would you like to learn more about #{artist.gallery.name}? Y or N"
+        input=gets.chomp
+
+        if input.downcase == "y"
+            gallery_details(artist.gallery)
+        elsif input.downcase == "n"
+            closer
+        else 
+            "I did not recognize your selection. Please try again"
+        end 
 
     end 
 
@@ -107,15 +117,6 @@ class CLI
         end 
     end 
 
-    # def list_presenting_artists(gallery)
-    #     puts "Testing."
-    #     # binding.pry
-    #     #Instantiates though Exhibitors return a list of galleries back in a numbered list and artist and listed alphabetically
-    #     # gallery.artists.name.each.with_index(1) do |artist, i|
-    #     #     puts "#{i}. #{artist}"
-    #     # end 
-    # end 
-
     def gallery_details(gallery)
         Scraper.scrape_idv_gallery(gallery) 
          # Puts intro message 
@@ -123,23 +124,25 @@ class CLI
          puts "Here is more details about #{gallery.name}."
          puts ""
          # Puts artist info
-         puts "Presenting Artist: #{gallery.artist_name.join(" | ")} "
+         puts "Presenting Artist(s): #{gallery.artist_name.join(" | ")} "
          puts ""
          #Puts Gallery Info
-         puts "Presenting Artist: #{gallery.info} "
+         puts "About the Gallery: #{gallery.info} "
          puts ""
 
          #Explore Presenting Artist?
-         puts "Would you like to explore #{gallery.name}'s Presenting Artist? Y OR N"
+         puts "Would you like to explore #{gallery.name}'s Presenting Artist(s)? Y OR N"
          input=gets.chomp
 
          if input.downcase == "y"
             list_presenting_artists(gallery)
             presenting_artist_menu(gallery)
+            continue_exploring_presenting_artists(gallery)
+            
          elsif input.downcase == "n"
             closer
          else 
-            puts " I did not recognize your selection. Please try again"
+            puts "I did not recognize your selection. Please try again"
          end
 
          
@@ -152,7 +155,7 @@ class CLI
     end 
 
     def presenting_artist_menu(gallery)
-        binding.pry
+
         puts "Please select an artist"
         user_input=gets.chomp
         if !user_input.to_i.between?(1,gallery.artists.count)
@@ -163,27 +166,41 @@ class CLI
             artist= gallery.artists[user_input.to_i - 1]
             artist_details(artist)
         end
+
     end
 
+    def continue_exploring_presenting_artists(gallery)
+        puts "Would you like to keep exploring #{gallery.name}'s Presenting Artist(s)? Y or N"
+        input=gets.chomp
+        if input.downcase == "y"
+            list_presenting_artists(gallery)
+            presenting_artist_menu(gallery)
+        elsif input.downcase == "n"
+            closer
+        else 
+            puts "Invalid entry. Please try again"
+        end 
+    end 
+
     def closer
-        puts "Would you like to proceed? Type Number to Select."
+        puts "How would you like to proceed? Please Type Number to Select."
         puts " (1) Explore all Artist"
         puts " (2) Explore all Galleries"
         puts " (3) Exit"
 
         input=gets.chomp
-        #if they say Y run menu method
+        #if they say 1 display All Artist
             if input == "1"
                 list_artist
                 artist_menu
-        #if they say N exit application
+        #if they say 2 display all Galleries
             elsif input == "2"
                 list_gallery
                 gallery_menu
-        #if they say N exit application
+        #if they say 3 exit application
             elsif input == "3"
                 puts ""
-                puts "Thank you for exploring!"
+                puts "Thank you for checking out the 1-54 Catalog. Please visit www.1-54.com to learn more!"
                 puts ""
          #if input is invalid raise error
             else 

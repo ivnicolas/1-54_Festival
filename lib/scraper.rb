@@ -30,13 +30,10 @@ class Scraper
             end 
         
         end 
-        # binding.pry
-
-        #Set gallery.artist to an array of artist instances
+       
         gallery.artists= artists
         
-        #get gallery info
-        gallery.info= doc.css("div section p").text
+        gallery.info= doc.css(".entry-content").css("p")[0].text
 
     end 
 
@@ -64,9 +61,15 @@ class Scraper
         #Here is where you collect gallery, bio, and about message 
         html = open(artist.url)
         doc = Nokogiri::HTML(html)
-        artist.gallery = doc.css("a.artist-representation").text
+
+        Galleries.all.detect do |gallery|
+            if gallery.name == doc.css("a.artist-representation").text
+            artist.gallery = gallery
+            end 
+        end     
+
         artist.bio = doc.css("div.small-bio p").text
-        artist.about_art =  doc.css("div section p").text.split("\n").join(" ")
+        artist.about_art =  doc.css(".entry-content").css("p")[0].text
 
     end 
     
