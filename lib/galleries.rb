@@ -1,5 +1,5 @@
-class Exhibitors 
-    attr_accessor :name, :url, :artists
+class Galleries 
+    attr_accessor :name, :url, :artists, :info
 
     @@all = []
 

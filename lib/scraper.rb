@@ -3,19 +3,41 @@ class Scraper
 
     RELATIVE_URL= "https://www.1-54.com/"
 
+
    
-    #Scrape Exhibitors
+    #Scrape Galleries
     def self.scrape_exhibitors
         html = open("https://www.1-54.com/new-york/exhibitors/")
         doc = Nokogiri::HTML (html)
-        binding.pry
         doc.css("ul.text-columns.column-4 li a").each do |gallery|
             url = gallery.attr("href")
             name = gallery.text
-            binding.pry
+            Galleries.new(name,url)
         end 
 
+    end 
+
+    #Screap Individual Gallery
+    def self.scrape_idv_gallery(gallery) 
+        html = open(gallery.url)
+        doc = Nokogiri::HTML(html)
+
+        # gallery.artists= doc.css("ul.presented-artists li").text
+
         
+
+        artists=[]
+        doc.css("ul.presented-artists li").each do |presented_artist|
+            # binding.pry
+            artists<<presented_artist.text.split(", ").reverse.join(" ")
+        end 
+
+        gallery.artists= artists.join(" | ")
+        
+
+        # ## Presented Artist: doc.css("ul.presented-artists li").text
+
+        # ## all the text *sigh* doc.css("div section p").text
     end 
     #Scrape Artist
     def self.scrape_artist 
@@ -49,3 +71,4 @@ class Scraper
 end 
 
 #bin/1-54_Festival
+
