@@ -12,5 +12,4 @@ require_relative "../lib/galleries"
 
 CLI.new.run
 
-# Scraper.scrape_artist
-# Scraper.scrape_galleries
+

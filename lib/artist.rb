@@ -5,7 +5,6 @@ class Artist
     attr_reader :name
 
     #collect all instances
-
     @@all = []
 
     #initialize with two arguments (name, url) an push into @@all
@@ -13,21 +12,18 @@ class Artist
         @name = name
         @url = url
         @@all << self
-
     end 
 
     #method that prints out all instances 
-
     def self.all
         @@all
     end 
 
+    #edit the formatting of name
     def  name
         name_formatted=@name.split(", ")
         new_name= name_formatted.reverse.join(" ")
         new_name
     end 
-
-
-
+    
 end

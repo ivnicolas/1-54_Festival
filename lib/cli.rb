@@ -47,6 +47,7 @@ class CLI
         else 
             artist=Artist.all[user_input.to_i - 1]
             artist_details(artist)
+            continue_exploring_gallery(artist)
         end 
 
     end 
@@ -57,6 +58,7 @@ class CLI
 #ARTIST: Puts out details of selected artist, which includes  gallery, bio, and artist statement of selected artist. *Asks User if they want to lern more about selected artist's gallery or explore other options (REFACTOR)
     def artist_details(artist)
        Scraper.scrape_individual_artist(artist) 
+    #    binding.pry
         puts ""
         puts "Here is more details about #{artist.name}."
         puts ""
@@ -67,19 +69,21 @@ class CLI
         puts "About the Artist : #{artist.about_art}"
         puts ""
 
-        puts "Would you like to learn more about #{artist.gallery.name}? Y or N"
-        input=gets.chomp
-
-        if input.downcase == "y"
-            gallery_details(artist.gallery)
-        elsif input.downcase == "n"
-            closer
-        else 
-            "I did not recognize your selection. Please try again"
-        end 
-
     end 
+#Continue Exploring Gallery Details
+def continue_exploring_gallery(artist)
 
+    puts "Would you like to learn more about #{artist.gallery.name}? Y or N"
+    input=gets.chomp
+
+    if input.downcase == "y"
+        gallery_details(artist.gallery)
+    elsif input.downcase == "n"
+        closer
+    else 
+        "I did not recognize your selection. Please try again"
+    end 
+end 
 #GALLERY: Asks User to make a selection from gallery list, checks validility of selection, and, if valid, calls on gallery_details
     def gallery_menu
 
@@ -119,7 +123,7 @@ class CLI
          if input.downcase == "y"
             list_presenting_artists(gallery)
             presenting_artist_menu(gallery)
-            continue_exploring_presenting_artists(gallery)
+            # continue_exploring_presenting_artists(gallery)
             
          elsif input.downcase == "n"
             closer
@@ -144,6 +148,7 @@ class CLI
         else 
             artist= gallery.artists[user_input.to_i - 1]
             artist_details(artist)
+            continue_exploring_presenting_artists(gallery)
         end
 
     end

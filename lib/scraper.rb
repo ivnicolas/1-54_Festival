@@ -19,7 +19,7 @@ class Scraper
         html = open(gallery.url)
         doc = Nokogiri::HTML(html)
        
-        #interate through artist,push into array,
+        #Finds artists in Artist.all who are equal to the presenting artists in selected gallery and sets galley.artists to an array of those artist objects
         artists=[]
         doc.css("ul.presented-artists li").each do |presented_artist| 
             p_artist=presented_artist.text.split(", ").reverse.join(" ")
@@ -28,11 +28,9 @@ class Scraper
                     artists <<artist
                 end
             end 
-        
+
         end 
-       
-        gallery.artists= artists
-        
+        gallery.artists= artists 
         gallery.info= doc.css(".entry-content").css("p")[0].text
 
     end 
@@ -58,16 +56,15 @@ class Scraper
     #Scrape Individual Artist 
     def self.scrape_individual_artist(artist)
 
-        #Here is where you collect gallery, bio, and about message 
         html = open(artist.url)
         doc = Nokogiri::HTML(html)
 
         Galleries.all.detect do |gallery|
-            if gallery.name == doc.css("a.artist-representation").text
+            if gallery.name == doc.css("a.artist-representation")[0].text
             artist.gallery = gallery
             end 
         end     
-
+        
         artist.bio = doc.css("div.small-bio p").text
         artist.about_art =  doc.css(".entry-content").css("p")[0].text
 
