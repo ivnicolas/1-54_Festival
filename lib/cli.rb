@@ -1,5 +1,6 @@
 class CLI
 
+#DESCRIBE
     def run
         #puts welcome message with blurb about festival
         puts ""
@@ -11,7 +12,7 @@ class CLI
         main_menu
 
     end 
-    
+#DESCRIBE 
     def main_menu
        #ask user to chose how they would like to explore the festival 
        puts ""
@@ -33,47 +34,36 @@ class CLI
        #prints out the correct list based on selection
     end 
 
-## FOR ARTIST ## 
+#ARTIST:Asks User to make a selection from list, checks validity of selecetion, and, if valid, calls on artist_details 
     def artist_menu
-        #Ask user to Choose Artist
+    
         puts "Please select a number from the list present to learn more about an artist"
         user_input=gets.chomp
-        #if not valid riase error and print error message
+        
         if !user_input.to_i.between?(1,Artist.all.count)
-            #Try to create and error message
             puts "Please choose a valid number"
             list_artist
             artist_menu
         else 
-            #if valid call artist_artist details method
             artist=Artist.all[user_input.to_i - 1]
             artist_details(artist)
         end 
 
-
     end 
-
+#ARTIST:Iterates through Artist.all and returns a numbered list 
     def list_artist
-        #Instantiates though artist return a list of artist back in a numbered list and artist and listed alphabetically
-        Artist.all.each.with_index(1) do |artist, i|
-            puts "#{i}. #{artist.name}"
-        end 
+        Artist.all.each.with_index(1) {|artist, i| puts "#{i}. #{artist.name}"}
     end 
-
-    
+#ARTIST: Puts out details of selected artist, which includes  gallery, bio, and artist statement of selected artist. *Asks User if they want to lern more about selected artist's gallery or explore other options (REFACTOR)
     def artist_details(artist)
-       Scraper.scrape_individual_artist(artist)
-        # Puts intro message 
+       Scraper.scrape_individual_artist(artist) 
         puts ""
         puts "Here is more details about #{artist.name}."
         puts ""
-        # Puts gallery info
         puts "Representing Gallery: #{artist.gallery.name} "
         puts ""
-        # Puts bio message
         puts "Artist Bio: #{artist.bio}"
         puts ""
-        # Puts paragraph about artist's work 
         puts "About the Artist : #{artist.about_art}"
         puts ""
 
@@ -90,43 +80,35 @@ class CLI
 
     end 
 
-    ## FOR GALLERIES ##
+#GALLERY: Asks User to make a selection from gallery list, checks validility of selection, and, if valid, calls on gallery_details
     def gallery_menu
-        #Ask user to Choose Gallery
+
         puts "Please select a number from the list present to learn more about a gallery"
         user_input=gets.chomp
-        #if not valid riase error and print error message
+
         if !user_input.to_i.between?(1,Galleries.all.count)
-            #Try to create and error message
             puts "Please choose a valid number"
             list_gallery
             gallery_menu
         else 
-            #if valid call artist_artist details method
             gallery=Galleries.all[user_input.to_i - 1]
             gallery_details(gallery)
         end 
 
-
     end 
-
+#GALLERY:Iterates through Gallerie.all and returns a numbered list
     def list_gallery
-        #Instantiates though Exhibitors return a list of galleries back in a numbered list and artist and listed alphabetically
-        Galleries.all.each.with_index(1) do |gallery, i|
-            puts "#{i}. #{gallery.name}"
-        end 
+        Galleries.all.each.with_index(1) { |gallery, i| puts "#{i}. #{gallery.name}"}
     end 
-
+#GALLERY: Puts details of selected gallery, which includes Presenting artist and gallery info. #Ask User is they want to learn more about selected gallery's presented artist or explore other options (REFACTOR)
     def gallery_details(gallery)
         Scraper.scrape_idv_gallery(gallery) 
-         # Puts intro message 
+    
          puts ""
          puts "Here is more details about #{gallery.name}."
          puts ""
-         # Puts artist info
          puts "Presenting Artist(s): #{gallery.artist_name.join(" | ")} "
          puts ""
-         #Puts Gallery Info
          puts "About the Gallery: #{gallery.info} "
          puts ""
 
@@ -144,16 +126,13 @@ class CLI
          else 
             puts "I did not recognize your selection. Please try again"
          end
-
-         
+  
     end 
-
+#GALLERY:Takes in argument of gallery and returns a number list of the presented artist at that gallery. 
     def list_presenting_artists(gallery)
-        gallery.artist_name.each.with_index(1) do |artist, i|
-            puts "#{i}. #{artist}"
-        end 
+        gallery.artist_name.each.with_index(1) {|artist, i|   puts "#{i}. #{artist}"}
     end 
-
+#GALLERY:Take in argument of gallery, ask user to choose an artist who is being presented by that gallery, and if selection is valid, calls on artist_details taking argument of selected artist
     def presenting_artist_menu(gallery)
 
         puts "Please select an artist"
@@ -168,7 +147,7 @@ class CLI
         end
 
     end
-
+#GALLERY:Takes in argument of gallery. Asks user if they want to continue exploring artist at this gallery or explor other options
     def continue_exploring_presenting_artists(gallery)
         puts "Would you like to keep exploring #{gallery.name}'s Presenting Artist(s)? Y or N"
         input=gets.chomp
@@ -182,6 +161,7 @@ class CLI
         end 
     end 
 
+#Ask user if they want to explore all artist, all galleries, or exit. 
     def closer
         puts "How would you like to proceed? Please Type Number to Select."
         puts " (1) Explore all Artist"
@@ -208,5 +188,4 @@ class CLI
                 closer
             end 
     end 
-
 end 
