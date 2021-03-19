@@ -12,4 +12,12 @@ class Galleries
     def self.all 
         @@all
     end 
+
+    def artist_name
+    self.artists.collect do |artist|
+        artist.name
+    end 
+    #     Artist.all.select{|artist| artist.gallery==self }
+    end 
+
 end 

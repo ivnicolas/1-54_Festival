@@ -5,33 +5,36 @@ class CLI
         puts ""
         puts "Welcome to the 1-54 Artist Catalog"
         puts "1-54 is the first leading international art fair dedicated to contemporary art from Africa and its diaspora."
-        main_menue
+        puts "Loading Catalog..."
+        Scraper.scrape_galleries
+        Scraper.scrape_artist
+        main_menu
 
     end 
     
-    def main_menue
+    def main_menu
        #ask user to chose how they would like to explore the festival 
        puts ""
        puts "Type (A) to Explore Galleries OR (B) to Explore Artist"
        user_input=gets.chomp
         if user_input.downcase == "a"
-            Scraper.scrape_exhibitors
+            # Scraper.scrape_exhibitors
             list_gallery
-            gallery_menue
+            gallery_menu
         elsif user_input.downcase == "b"
-            Scraper.scrape_artist
+            # Scraper.scrape_artist
             list_artist
-            artist_menue
+            artist_menu
         else 
             puts "Invalid entry. Please try again"
-            main_menue
+            main_menu
         end 
 
        #prints out the correct list based on selection
     end 
 
 ## FOR ARTIST ## 
-    def artist_menue
+    def artist_menu
         #Ask user to Choose Artist
         puts "Please select a number from the list present to learn more about an artist"
         user_input=gets.chomp
@@ -40,7 +43,7 @@ class CLI
             #Try to create and error message
             puts "Please choose a valid number"
             list_artist
-            artist_menue
+            artist_menu
         else 
             #if valid call artist_artist details method
             artist=Artist.all[user_input.to_i - 1]
@@ -78,7 +81,7 @@ class CLI
     end 
 
     ## FOR GALLERIES ##
-    def gallery_menue
+    def gallery_menu
         #Ask user to Choose Gallery
         puts "Please select a number from the list present to learn more about a gallery"
         user_input=gets.chomp
@@ -87,14 +90,13 @@ class CLI
             #Try to create and error message
             puts "Please choose a valid number"
             list_gallery
-            gallery_menue
+            gallery_menu
         else 
             #if valid call artist_artist details method
             gallery=Galleries.all[user_input.to_i - 1]
             gallery_details(gallery)
         end 
 
-        closer
 
     end 
 
@@ -105,27 +107,81 @@ class CLI
         end 
     end 
 
+    # def list_presenting_artists(gallery)
+    #     puts "Testing."
+    #     # binding.pry
+    #     #Instantiates though Exhibitors return a list of galleries back in a numbered list and artist and listed alphabetically
+    #     # gallery.artists.name.each.with_index(1) do |artist, i|
+    #     #     puts "#{i}. #{artist}"
+    #     # end 
+    # end 
+
     def gallery_details(gallery)
         Scraper.scrape_idv_gallery(gallery) 
          # Puts intro message 
          puts ""
          puts "Here is more details about #{gallery.name}."
          puts ""
-         # Puts gallery info
-         puts "Presenting Artist: #{gallery.artists} "
+         # Puts artist info
+         puts "Presenting Artist: #{gallery.artist_name.join(" | ")} "
          puts ""
+         #Puts Gallery Info
+         puts "Presenting Artist: #{gallery.info} "
+         puts ""
+
+         #Explore Presenting Artist?
+         puts "Would you like to explore #{gallery.name}'s Presenting Artist? Y OR N"
+         input=gets.chomp
+
+         if input.downcase == "y"
+            list_presenting_artists(gallery)
+            presenting_artist_menu(gallery)
+         elsif input.downcase == "n"
+            closer
+         else 
+            puts " I did not recognize your selection. Please try again"
+         end
+
+         
     end 
 
+    def list_presenting_artists(gallery)
+        gallery.artist_name.each.with_index(1) do |artist, i|
+            puts "#{i}. #{artist}"
+        end 
+    end 
+
+    def presenting_artist_menu(gallery)
+        binding.pry
+        puts "Please select an artist"
+        user_input=gets.chomp
+        if !user_input.to_i.between?(1,gallery.artists.count)
+            puts "Invalid entry. Please try again"
+            list_presenting_artists(gallery)
+            presenting_artist_menu(gallery) 
+        else 
+            artist= gallery.artists[user_input.to_i - 1]
+            artist_details(artist)
+        end
+    end
 
     def closer
-        puts "Would you like to continue? Enter Y or N"
+        puts "Would you like to proceed? Type Number to Select."
+        puts " (1) Explore all Artist"
+        puts " (2) Explore all Galleries"
+        puts " (3) Exit"
+
         input=gets.chomp
-         #if they say Y run menue method
-            if input.downcase == "y"
+        #if they say Y run menu method
+            if input == "1"
                 list_artist
-                menue 
-         #if they say N exit application
-            elsif input.downcase == "n"
+                artist_menu
+        #if they say N exit application
+            elsif input == "2"
+                list_gallery
+                gallery_menu
+        #if they say N exit application
+            elsif input == "3"
                 puts ""
                 puts "Thank you for exploring!"
                 puts ""
@@ -133,7 +189,7 @@ class CLI
             else 
                 puts "Please enter a valid "
                 closer
-        end 
+            end 
     end 
 
 end 

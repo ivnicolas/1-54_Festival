@@ -1,12 +1,9 @@
 
 class Scraper 
 
-    RELATIVE_URL= "https://www.1-54.com/"
 
-
-   
     #Scrape Galleries
-    def self.scrape_exhibitors
+    def self.scrape_galleries
         html = open("https://www.1-54.com/new-york/exhibitors/")
         doc = Nokogiri::HTML (html)
         doc.css("ul.text-columns.column-4 li a").each do |gallery|
@@ -21,24 +18,28 @@ class Scraper
     def self.scrape_idv_gallery(gallery) 
         html = open(gallery.url)
         doc = Nokogiri::HTML(html)
-
-        # gallery.artists= doc.css("ul.presented-artists li").text
-
-        
-
+       
+        #interate through artist,push into array,
         artists=[]
-        doc.css("ul.presented-artists li").each do |presented_artist|
-            # binding.pry
-            artists<<presented_artist.text.split(", ").reverse.join(" ")
-        end 
-
-        gallery.artists= artists.join(" | ")
+        doc.css("ul.presented-artists li").each do |presented_artist| 
+            p_artist=presented_artist.text.split(", ").reverse.join(" ")
+            Artist.all.detect do |artist|
+                if artist.name == p_artist
+                    artists <<artist
+                end
+            end 
         
+        end 
+        # binding.pry
 
-        # ## Presented Artist: doc.css("ul.presented-artists li").text
+        #Set gallery.artist to an array of artist instances
+        gallery.artists= artists
+        
+        #get gallery info
+        gallery.info= doc.css("div section p").text
 
-        # ## all the text *sigh* doc.css("div section p").text
     end 
+
     #Scrape Artist
     def self.scrape_artist 
 
@@ -51,6 +52,8 @@ class Scraper
             name = artist.text
             Artist.new(name,url)
         end 
+
+
         
     end 
 
@@ -61,7 +64,6 @@ class Scraper
         #Here is where you collect gallery, bio, and about message 
         html = open(artist.url)
         doc = Nokogiri::HTML(html)
-
         artist.gallery = doc.css("a.artist-representation").text
         artist.bio = doc.css("div.small-bio p").text
         artist.about_art =  doc.css("div section p").text.split("\n").join(" ")
@@ -70,5 +72,5 @@ class Scraper
     
 end 
 
-#bin/1-54_Festival
+
 

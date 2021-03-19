@@ -2,6 +2,7 @@ class Artist
     #add attr_accessors 
     attr_accessor :url, :gallery, :bio, :about_art 
     attr_writer :name
+    attr_reader :name
 
     #collect all instances
 
@@ -26,5 +27,7 @@ class Artist
         new_name= name_formatted.reverse.join(" ")
         new_name
     end 
+
+
 
 end
