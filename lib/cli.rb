@@ -4,9 +4,10 @@ class CLI
     def run
         #puts welcome message with blurb about festival
         puts ""
-        puts "Welcome to the 1-54 Artist Catalog"
-        puts "1-54 is the first leading international art fair dedicated to contemporary art from Africa and its diaspora."
-        puts "Loading Catalog..."
+        puts "Welcome to the 1-54 Artist Catalog".black.on_white
+        puts "1-54 is the first leading international art fair dedicated to contemporary art from Africa and its diaspora.".italic
+        puts ""
+        puts "Loading Catalog...".red
         Scraper.scrape_galleries
         Scraper.scrape_artist
         main_menu
@@ -16,7 +17,7 @@ class CLI
     def main_menu
        #ask user to chose how they would like to explore the festival 
        puts ""
-       puts "Type (A) to Explore Galleries OR (B) to Explore Artist"
+       puts "Type (A) to Explore Galleries OR (B) to Explore Artist".black.on_white
        user_input=gets.chomp
         if user_input.downcase == "a"
             # Scraper.scrape_exhibitors
@@ -27,7 +28,7 @@ class CLI
             list_artist
             artist_menu
         else 
-            puts "Invalid entry. Please try again"
+            puts "Invalid entry. Please try again".black.on_white
             main_menu
         end 
 
@@ -37,11 +38,11 @@ class CLI
 #ARTIST:Asks User to make a selection from list, checks validity of selecetion, and, if valid, calls on artist_details 
     def artist_menu
     
-        puts "Please select a number from the list present to learn more about an artist"
+        puts "Please select a number from the list present to learn more about an artist".black.on_white
         user_input=gets.chomp
         
         if !user_input.to_i.between?(1,Artist.all.count)
-            puts "Please choose a valid number"
+            puts "Please choose a valid number".black.on_white
             list_artist
             artist_menu
         else 
@@ -58,9 +59,9 @@ class CLI
 #ARTIST: Puts out details of selected artist, which includes  gallery, bio, and artist statement of selected artist. *Asks User if they want to lern more about selected artist's gallery or explore other options (REFACTOR)
     def artist_details(artist)
        Scraper.scrape_individual_artist(artist) 
-    #    binding.pry
+
         puts ""
-        puts "Here is more details about #{artist.name}."
+        puts "Here are more details about #{artist.name.bold}.".black.on_light_white
         puts ""
         puts "Representing Gallery: #{artist.gallery.name} "
         puts ""
@@ -73,7 +74,7 @@ class CLI
 #Continue Exploring Gallery Details
 def continue_exploring_gallery(artist)
 
-    puts "Would you like to learn more about #{artist.gallery.name}? Y or N"
+    puts "Would you like to learn more about #{artist.gallery.name.bold}? Y or N".black.on_white
     input=gets.chomp
 
     if input.downcase == "y"
@@ -81,17 +82,17 @@ def continue_exploring_gallery(artist)
     elsif input.downcase == "n"
         closer
     else 
-        "I did not recognize your selection. Please try again"
+        "I did not recognize your selection. Please try again".black.on_white
     end 
 end 
 #GALLERY: Asks User to make a selection from gallery list, checks validility of selection, and, if valid, calls on gallery_details
     def gallery_menu
 
-        puts "Please select a number from the list present to learn more about a gallery"
+        puts "Please select a number from the list present to learn more about a gallery".black.on_white
         user_input=gets.chomp
 
         if !user_input.to_i.between?(1,Galleries.all.count)
-            puts "Please choose a valid number"
+            puts "Please choose a valid number".black.on_white
             list_gallery
             gallery_menu
         else 
@@ -109,7 +110,7 @@ end
         Scraper.scrape_idv_gallery(gallery) 
     
          puts ""
-         puts "Here is more details about #{gallery.name}."
+         puts "Here is more details about #{gallery.name.bold}.".black.on_white
          puts ""
          puts "Presenting Artist(s): #{gallery.artist_name.join(" | ")} "
          puts ""
@@ -117,7 +118,7 @@ end
          puts ""
 
          #Explore Presenting Artist?
-         puts "Would you like to explore #{gallery.name}'s Presenting Artist(s)? Y OR N"
+         puts "Would you like to explore #{gallery.name.bold}'s Presenting Artist(s)? Y OR N".black.on_white
          input=gets.chomp
 
          if input.downcase == "y"
@@ -128,7 +129,7 @@ end
          elsif input.downcase == "n"
             closer
          else 
-            puts "I did not recognize your selection. Please try again"
+            puts "I did not recognize your selection. Please try again".black.on_white
          end
   
     end 
@@ -139,10 +140,10 @@ end
 #GALLERY:Take in argument of gallery, ask user to choose an artist who is being presented by that gallery, and if selection is valid, calls on artist_details taking argument of selected artist
     def presenting_artist_menu(gallery)
 
-        puts "Please select an artist"
+        puts "Please select an artist".black.on_white
         user_input=gets.chomp
         if !user_input.to_i.between?(1,gallery.artists.count)
-            puts "Invalid entry. Please try again"
+            puts "Invalid entry. Please try again".black.on_white
             list_presenting_artists(gallery)
             presenting_artist_menu(gallery) 
         else 
@@ -154,7 +155,7 @@ end
     end
 #GALLERY:Takes in argument of gallery. Asks user if they want to continue exploring artist at this gallery or explor other options
     def continue_exploring_presenting_artists(gallery)
-        puts "Would you like to keep exploring #{gallery.name}'s Presenting Artist(s)? Y or N"
+        puts "Would you like to keep exploring #{gallery.name.bold}'s Presenting Artist(s)? Y or N".black.on_white
         input=gets.chomp
         if input.downcase == "y"
             list_presenting_artists(gallery)
@@ -162,13 +163,13 @@ end
         elsif input.downcase == "n"
             closer
         else 
-            puts "Invalid entry. Please try again"
+            puts "Invalid entry. Please try again".black.on_white
         end 
     end 
 
 #Ask user if they want to explore all artist, all galleries, or exit. 
     def closer
-        puts "How would you like to proceed? Please Type Number to Select."
+        puts "How would you like to proceed? Please Type Number to Select.".black.on_white
         puts " (1) Explore all Artist"
         puts " (2) Explore all Galleries"
         puts " (3) Exit"
@@ -185,11 +186,11 @@ end
         #if they say 3 exit application
             elsif input == "3"
                 puts ""
-                puts "Thank you for checking out the 1-54 Catalog. Please visit www.1-54.com to learn more!"
+                puts "Thank you for checking out the 1-54 Catalog. Please visit www.1-54.com to learn more!".white.on_magenta
                 puts ""
          #if input is invalid raise error
             else 
-                puts "Please enter a valid "
+                puts "Please enter a valid ".black.on_white
                 closer
             end 
     end 

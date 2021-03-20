@@ -3,6 +3,7 @@
 require "open-uri"
 require "nokogiri"
 require "pry"
+require "colorize"
 
 require_relative "../lib/cli"
 require_relative "../lib/scraper"
