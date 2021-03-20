@@ -4,7 +4,7 @@ class CLI
     def run
         #puts welcome message with blurb about festival
         puts ""
-        puts "Welcome to the 1-54 Artist Catalog".black.on_white
+        puts "Welcome to the 1-54 Artist Catalog".black.on_magenta
         puts "1-54 is the first leading international art fair dedicated to contemporary art from Africa and its diaspora.".italic
         puts ""
         puts "Loading Catalog...".red
@@ -72,23 +72,23 @@ class CLI
 
     end 
 #ARTIST Continue Exploring Gallery Details
-def continue_exploring_gallery(artist)
+    def continue_exploring_gallery(artist)
 
-    puts "Would you like to learn more about #{artist.gallery.name.bold}? Y or N".black.on_white
-    input=gets.chomp
+        puts "Would you like to learn more about #{artist.gallery.name.bold}? Y or N".black.on_white
+        input=gets.chomp
 
-    if input.downcase == "y"
-        gallery_details(artist.gallery)
-        explore_gallery(artist.gallery)
-    elsif input.downcase == "n"
-        closer
-    else 
-        #THIS ONE 
-        puts "I did not recognize your selection. Please try again".black.on_white
-        continue_exploring_gallery(artist)
+        if input.downcase == "y"
+            gallery_details(artist.gallery)
+            explore_gallery(artist.gallery)
+        elsif input.downcase == "n"
+            closer
+        else 
+            #THIS ONE 
+            puts "I did not recognize your selection. Please try again".black.on_white
+            continue_exploring_gallery(artist)
 
+        end 
     end 
-end 
 #GALLERY: Asks User to make a selection from gallery list, checks validility of selection, and, if valid, calls on gallery_details
     def gallery_menu
 
@@ -110,7 +110,7 @@ end
     def list_gallery
         Galleries.all.each.with_index(1) { |gallery, i| puts "#{i}. #{gallery.name}"}
     end 
-#GALLERY: Puts details of selected gallery, which includes Presenting artist and gallery info. #Ask User is they want to learn more about selected gallery's presented artist or explore other options (REFACTOR)
+#GALLERY: Puts details of selected gallery, which includes Presenting artist and gallery info. 
     def gallery_details(gallery)
         Scraper.scrape_idv_gallery(gallery) 
     
