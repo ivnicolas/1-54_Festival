@@ -56,7 +56,7 @@ class CLI
     def list_artist
         Artist.all.each.with_index(1) {|artist, i| puts "#{i}. #{artist.name}"}
     end 
-#ARTIST: Puts out details of selected artist, which includes  gallery, bio, and artist statement of selected artist. *Asks User if they want to lern more about selected artist's gallery or explore other options (REFACTOR)
+#ARTIST: Puts out details of selected artist, which includes  gallery, bio, and artist statement of selected artist. 
     def artist_details(artist)
        Scraper.scrape_individual_artist(artist) 
 
@@ -71,7 +71,7 @@ class CLI
         puts ""
 
     end 
-#Continue Exploring Gallery Details
+#ARTIST Continue Exploring Gallery Details
 def continue_exploring_gallery(artist)
 
     puts "Would you like to learn more about #{artist.gallery.name.bold}? Y or N".black.on_white
@@ -79,10 +79,14 @@ def continue_exploring_gallery(artist)
 
     if input.downcase == "y"
         gallery_details(artist.gallery)
+        explore_gallery(artist.gallery)
     elsif input.downcase == "n"
         closer
     else 
-        "I did not recognize your selection. Please try again".black.on_white
+        #THIS ONE 
+        puts "I did not recognize your selection. Please try again".black.on_white
+        continue_exploring_gallery(artist)
+
     end 
 end 
 #GALLERY: Asks User to make a selection from gallery list, checks validility of selection, and, if valid, calls on gallery_details
@@ -98,6 +102,7 @@ end
         else 
             gallery=Galleries.all[user_input.to_i - 1]
             gallery_details(gallery)
+            explore_gallery(gallery)
         end 
 
     end 
@@ -116,21 +121,6 @@ end
          puts ""
          puts "About the Gallery: #{gallery.info} "
          puts ""
-
-         #Explore Presenting Artist?
-         puts "Would you like to explore #{gallery.name.bold}'s Presenting Artist(s)? Y OR N".black.on_white
-         input=gets.chomp
-
-         if input.downcase == "y"
-            list_presenting_artists(gallery)
-            presenting_artist_menu(gallery)
-            # continue_exploring_presenting_artists(gallery)
-            
-         elsif input.downcase == "n"
-            closer
-         else 
-            puts "I did not recognize your selection. Please try again".black.on_white
-         end
   
     end 
 #GALLERY:Takes in argument of gallery and returns a number list of the presented artist at that gallery. 
@@ -153,6 +143,24 @@ end
         end
 
     end
+#GALLERY : Describe
+    def explore_gallery(gallery)
+         #Explore Presenting Artist?
+         puts "Would you like to explore #{gallery.name.bold}'s Presenting Artist(s)? Y OR N".black.on_white
+         input=gets.chomp
+
+         if input.downcase == "y"
+            list_presenting_artists(gallery)
+            presenting_artist_menu(gallery)
+            
+         elsif input.downcase == "n"
+            closer
+         else 
+            puts "I did not recognize your selection. Please try again".black.on_white
+            puts ""
+            explore_gallery(gallery)
+         end
+    end 
 #GALLERY:Takes in argument of gallery. Asks user if they want to continue exploring artist at this gallery or explor other options
     def continue_exploring_presenting_artists(gallery)
         puts "Would you like to keep exploring #{gallery.name.bold}'s Presenting Artist(s)? Y or N".black.on_white
@@ -164,6 +172,7 @@ end
             closer
         else 
             puts "Invalid entry. Please try again".black.on_white
+            continue_exploring_presenting_artists(gallery)
         end 
     end 
 
