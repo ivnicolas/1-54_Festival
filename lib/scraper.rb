@@ -4,7 +4,7 @@ class Scraper
 
     #Scrape Galleries
     def self.scrape_galleries
-        html = open("https://www.1-54.com/new-york/exhibitors/")
+        html = open("https://www.1-54.com/london/exhibitors/")
         doc = Nokogiri::HTML (html)
         doc.css("ul.text-columns.column-4 li a").each do |gallery|
             url = gallery.attr("href")
@@ -38,10 +38,10 @@ class Scraper
     #Scrape Artist
     def self.scrape_artist 
 
-        #scrapes artist at New York exhbit for name and url 
-        html = open("https://1-54.com/new-york/artists/")
+        #scrapes artist at London exhbit for name and url 
+        html = open("https://www.1-54.com/london/artists/")
         doc = Nokogiri::HTML (html)
-        #scrapes artist at New York exhbit for name and url 
+        #scrapes artist at London exhbit for name and url 
         doc.css("ul.text-columns.column-5 ul li a").each do |artist|
             url = artist.attr("href")
             name = artist.text

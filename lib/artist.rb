@@ -25,5 +25,6 @@ class Artist
         new_name= name_formatted.reverse.join(" ")
         new_name
     end 
+
     
 end
